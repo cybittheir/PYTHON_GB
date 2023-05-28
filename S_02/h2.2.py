@@ -22,3 +22,14 @@ s_answer = int((summ - int(math.sqrt(D)))/2)
 
 print (f_answer, s_answer, "??",  first, second)
 
+stop_search = 0
+
+for x in range(1000):
+    for y in range(1000):
+        if x + y == summ and x * y == mult:
+            stop_search = 1
+            break
+    if stop_search == 1:
+        break
+print ("X = {}; Y = {}".format(x,y))
+
