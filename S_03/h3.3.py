@@ -29,32 +29,13 @@
 ##
 
 eng_dict={
-    "A":1,
-    "E":1,
-    "I":1,
-    "O":1,
-    "U":1,
-    "L":1,
-    "N":1,
-    "S":1,
-    "T":1,
-    "R":1,
-    "D":2,
-    "G":2,
-    "B":3,
-    "C":3,
-    "M":3,
-    "P":3,
-    "F":4,
-    "H":4,
-    "V":4,
-    "W":4,
-    "Y":4,
+    "A":1, "E":1, "I":1, "O":1, "U":1, "L":1, "N":1, "S":1, "T":1, "R":1,
+    "D":2, "G":2,
+    "B":3, "C":3, "M":3, "P":3,
+    "F":4, "H":4, "V":4, "W":4, "Y":4,
     "K":5,
-    "J":8,
-    "X":8,
-    "Q":10,
-    "Z":10
+    "J":8, "X":8,
+    "Q":10, "Z":10
 }
 
 ru_dict={
@@ -67,18 +48,24 @@ ru_dict={
     "Ф":10, "Щ":10, "Ъ":10
 }
 
-query=input("Введите слово: ")
-quiz=0
+query=input("Введите слово: ").strip()
+result=0
+err = 0
 
 if query[0].upper() in eng_dict:
     print("используем словарь для английского языка:")
     query_dict=eng_dict.copy()
-else:
+elif query[0].upper() in ru_dict:
     print ("используем словарь для русского языка")
     query_dict=ru_dict.copy()
+else:
+    err = 1
 
-for i in range(len(query)):
-    print (query[i].upper(),"=",query_dict[query[i].upper()],"(для контроля)")
-    quiz += query_dict[query[i].upper()]
+if err ==0:
+    for i in range(len(query)):
+        print (query[i].upper(),"=",query_dict[query[i].upper()],"(для контроля)")
+        result += query_dict[query[i].upper()]
 
-print ("Результат: {} баллов".format(quiz))
+    print ("Результат: {} баллов".format(result))
+else:
+    print ("Ошибка ввода")
