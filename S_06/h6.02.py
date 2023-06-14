@@ -22,8 +22,10 @@ min_sel = int(get_attr[0])
 max_sel = int(get_attr[1])
 get_array={}
 
-for i in range(size):
-    if min_sel <= in_array[i] <= max_sel:
-        get_array[i]=in_array[i]
+# for i in range(size):
+#    if min_sel <= in_array[i] <= max_sel:
+#        get_array[i]=in_array[i]
+
+get_array=[{i,in_array[i]} for i in range(size) if min_sel <= in_array[i] <= max_sel]
 
 print (get_array)
