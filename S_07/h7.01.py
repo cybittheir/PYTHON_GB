@@ -30,5 +30,6 @@ for sel_string in get_input:
         result = good
     else: 
         result = bad
+        break
 
 print (result)
