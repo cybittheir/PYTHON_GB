@@ -6,7 +6,7 @@
 # Стихотворение  Винни-Пух вбивает в программу с клавиатуры. 
 # В ответе напишите “Парам пам-пам”, если с ритмом все в порядке и “Пам парам”, если с ритмом все не в порядке
 
-good = "Парам пам-пам"
+poem=good = "Парам пам-пам"
 bad = "Пам парам"
 words=0
 vowel_chr="|"
@@ -26,10 +26,8 @@ for sel_string in get_input:
     arr_words=some_replace(sel_string).strip().split(vowel_chr)
     if words == 0:
         words = len(arr_words)
-    elif words == len(arr_words):
-        result = good
-    else: 
-        result = bad
+    elif words != len(arr_words):
+        poem = bad
         break
 
-print (result)
+print (poem)
