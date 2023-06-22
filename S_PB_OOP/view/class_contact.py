@@ -19,7 +19,7 @@ class Contact:
     
     def show_contacts(self,book: list[dict[str,str]]):
         if book:
-            print('\n' + '='*90)
+            print('='*90)
             print(f'| {"ID":>3} | {fields_name["last_name"]:<{fields_size["last_name"]}}| {fields_name["first_name"]:<{fields_size["first_name"]}}| {fields_name["phone"]:<{fields_size["phone"]}}| {fields_name["comment"]:<{fields_size["comment"]}}|')
             print('='*90)
             for record in book:

@@ -2,7 +2,6 @@
 from class_pb import PhoneBook
 from view import Contact
 from os.path import exists
-
 import view
 
 def start():
@@ -17,7 +16,7 @@ def start():
             case 1:
                 person.show_contacts(pb.search_contact(view.input_search(view.search_query)))
             case 2:
-                search_index = int(view.input_search(view.select_query).strip())
+                search_index = int(view.input_search_id(view.select_query + view.select_change).strip())
                 old_lname = pb.contacts[search_index].last_name
                 old_fname = pb.contacts[search_index].first_name
 
@@ -30,7 +29,7 @@ def start():
                 view.print_message(view.contact_changed(contact_change.get('last_name') if contact_change.get('last_name') else old_lname, contact_change.get('first_name') if contact_change.get('first_name') else old_fname))
 
             case 3:
-                search_index=int(view.input_search(view.select_query).strip())
+                search_index=int(view.input_search_id(view.select_query + view.select_delete).strip())
                 old_lname = pb.contacts[search_index].last_name
                 old_fname = pb.contacts[search_index].first_name
 
@@ -39,6 +38,7 @@ def start():
 
                 view.print_message(view.contact_deleted(old_lname, old_fname))
             case 4:
+                view.print_title(view.show_all)
                 person.show_contacts(pb.contacts)
             case 5:
                 pb.add_contact(person.input_contact(view.input_new_contact))
