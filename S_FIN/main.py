@@ -7,24 +7,43 @@ import random
 
 lst = ['robot'] * 10
 lst += ['human'] * 10
+lst += ['animal'] * 10
 random.shuffle(lst)
 
 print (lst)
-table=[]
 
-print ("\n***\n[", end = "")
-for num in range(len(lst)):
-    if lst[num] == 'robot':
-        new = [1,0]
-    elif lst[num] == 'human':
-        new = [0,1]
+def get_values(lst:list):
+    sel = list(set(lst))
+    select={}
+    for i in range(len(sel)):
+        convert = list()
+        for x in range(len(sel)):
+            if x == i:
+                convert.append(1)
+            else:
+                convert.append(0)
+        select[sel[i]] = list(convert)
+        convert.clear()
+    return select
 
-    if (num < len(lst)-1):
-        print (new,end=",\n")
-    else:
-        print (new,end="]\n")
 
-    table.append(new)
+def one_hot_convert(lst:list):
+    print ("========")
+    values=get_values(lst)
+    print (values)
 
-print ("\n***\n", table)
+    table=[]
+    print ("\n***\n[", end = "")
+    for num in range(len(lst)):
+        new = list(values[lst[num]])
+
+        if (num < len(lst)-1):
+            print (new,end=",\n")
+        else:
+            print (new,end="]\n")
+
+        table.append(new)
+    return table
+
+print ("\n***\n", one_hot_convert(lst))
 
